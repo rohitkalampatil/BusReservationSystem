@@ -1,0 +1,93 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 113
+Server version: 5.1.40-community MySQL Community Server (GPL)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bussystem          |
+| campus             |
+| coea               |
+| college            |
+| colleges           |
+| mseb_bill          |
+| mysql              |
+| test               |
++--------------------+
+9 rows in set (0.02 sec)
+
+mysql> use bussystem;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_bussystem |
++---------------------+
+| bus                 |
+| passengers          |
+| users               |
++---------------------+
+3 rows in set (0.02 sec)
+
+mysql> desc bus;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| bus_no        | int(11)     | NO   | PRI | NULL    |       |
+| depature_from | varchar(30) | YES  |     | NULL    |       |
+| travelling_to | varchar(30) | YES  |     | NULL    |       |
+| fare          | int(11)     | YES  |     | NULL    |       |
+| time          | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> desc passengers;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| bus_no        | int(11)     | YES  |     | NULL    |       |
+| ticket_no     | int(11)     | NO   | PRI | NULL    |       |
+| name          | varchar(30) | YES  |     | NULL    |       |
+| contact       | bigint(20)  | YES  |     | NULL    |       |
+| depature_from | varchar(30) | YES  |     | NULL    |       |
+| travel_to     | varchar(30) | YES  |     | NULL    |       |
+| travel_date   | date        | YES  |     | NULL    |       |
+| seats         | int(11)     | YES  |     | NULL    |       |
+| fare          | int(11)     | YES  |     | NULL    |       |
+| time          | varchar(10) | YES  |     | NULL    |       |
+| total         | int(11)     | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+11 rows in set (0.04 sec)
+
+mysql> desc users;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| uid   | bigint(20)  | NO   | PRI | NULL    |       |
+| name  | varchar(30) | YES  |     | NULL    |       |
+| pass  | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into users values(9860530753,'rohit','rohit');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> update users set pass='rohit0905' where uid=9860530753;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from users;
++------------+-------+-----------+
+| uid        | name  | pass      |
++------------+-------+-----------+
+| 7887975647 | rohit | rohit     |
+| 8080076680 | md    | mddeva    |
+| 9860530753 | rohit | rohit0905 |
++------------+-------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
